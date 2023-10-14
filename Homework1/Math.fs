@@ -18,7 +18,7 @@ module Math =
     let private newtonMethodBase (func : double -> double) getNext eps x0 =
         let rec newtonMethodBaseRec prev stepsCount =
             let next = getNext prev
-            if Math.Abs(func next - func prev) < 2.0 * eps then next, stepsCount, orderPair (prev, next) else newtonMethodBaseRec next (stepsCount + 1)
+            if abs (func next - func prev) < 2.0 * eps then next, stepsCount, orderPair (prev, next) else newtonMethodBaseRec next (stepsCount + 1)
         newtonMethodBaseRec x0 0
 
     let newtonMethod func funcDer eps x0 segment =
@@ -33,7 +33,7 @@ module Math =
             prev - (prev - prevPrev) * (func prev) / ((func prev) - (func prevPrev)) 
         let rec secantMethodRec prev prevPrev stepsCount =
             let next = getNext prev prevPrev
-            if Math.Abs(func next) < 2.0 * eps then next, stepsCount, orderPair (prev, next) else secantMethodRec next prev (stepsCount + 1)
+            if abs (func next) < 2.0 * eps then next, stepsCount, orderPair (prev, next) else secantMethodRec next prev (stepsCount + 1)
         secantMethodRec x1 x0 0
 
     let bisectionMethod (func : double -> double) eps segment =
@@ -41,7 +41,7 @@ module Math =
             let m = double (snd segment + fst segment) / 2.0
             let leftValue = func (fst segment)
             let middleValue = func  m
-            if Math.Abs(middleValue) < 2.0 * eps then m, stepsCount, segment else
+            if abs (snd segment - fst segment) < 2.0 * eps then m, stepsCount, segment else
                 if leftValue * middleValue < 0 then bisectionMethodRec eps (stepsCount + 1) (fst segment, m)
                 else bisectionMethodRec eps (stepsCount + 1) (m, snd segment)
         bisectionMethodRec eps 0 segment
