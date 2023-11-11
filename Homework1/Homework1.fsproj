@@ -1,14 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <OutputType>exe</OutputType>
   </PropertyGroup>
 
   <ItemGroup>
     <Compile Include="Math.fs" />
-    <Compile Include="Main.fs" />
+    <Compile Include="Program.fs" />
   </ItemGroup>
 
 </Project>

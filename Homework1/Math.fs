@@ -35,6 +35,7 @@ module Math =
             let next = getNext prev prevPrev
             if abs (func next) < 2.0 * eps then next, stepsCount, orderPair (prev, next) else secantMethodRec next prev (stepsCount + 1)
         secantMethodRec x1 x0 0
+        
 
     let bisectionMethod (func : double -> double) eps segment =
         let rec bisectionMethodRec eps stepsCount segment = 

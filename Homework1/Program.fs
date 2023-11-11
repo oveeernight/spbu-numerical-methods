@@ -1,5 +1,4 @@
 open System
-open System.Reflection
 open Homework1.Math
 
 let func (x : double) : double = Math.Sin x + Math.Pow(x, 3) - 9.0 * x + 3.0
