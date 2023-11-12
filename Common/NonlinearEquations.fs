@@ -1,8 +1,8 @@
-﻿namespace Homework1
+namespace Common
 
 open System
 
-module Math =
+module NonlinearEquations =
     let findSegments (func : double -> double) a b h =
         let rec findSegmentsRec a b h prevSegmentsCount = 
             let h = h / double 10

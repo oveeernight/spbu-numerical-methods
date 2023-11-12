@@ -1,5 +1,6 @@
 open System
-open Homework1.Math
+open Common.NonlinearEquations
+
 
 let func (x : double) : double = Math.Sin x + Math.Pow(x, 3) - 9.0 * x + 3.0
 let funcDer  (x : double) : double  = Math.Cos x + 3.0 * Math.Pow(x, 2.0) - 9.0

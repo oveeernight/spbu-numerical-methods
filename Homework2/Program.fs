@@ -1,6 +1,6 @@
 open System
 open Microsoft.FSharp.Collections
-open Homework2.Math
+open Common.Interpolation
 
 let func (x : double) : double = log (1.0 + x) - exp x
 printfn "Enter points count"
