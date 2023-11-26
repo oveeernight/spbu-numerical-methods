@@ -8,6 +8,7 @@
     <ItemGroup>
         <Compile Include="NonlinearEquations.fs" />
         <Compile Include="Interpolation.fs" />
+        <Compile Include="Printing.fs" />
     </ItemGroup>
 
 </Project>
