@@ -26,7 +26,7 @@ let ``Approximations Are Equal To Values In Interpolation Points`` testCase =
     
     
 [<Test>]
-let `` Divided diffs calculated correctly`` =
+let ``Divided diffs calculated correctly`` =
     let points : double list = [-1;1;2;3]
     let arrayPoints = Array.ofList points
     let values : double list = [9;3;3;5]

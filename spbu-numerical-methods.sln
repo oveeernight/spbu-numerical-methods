@@ -13,6 +13,10 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Homework3", "Homework3\Home
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Common", "Common\Common.fsproj", "{9DF30A10-6FF9-49E7-978B-BA66CBB65DC0}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Homework4", "Homework4\Homework4.fsproj", "{5273FD41-E3F4-40E4-9723-9430BB6DDE2D}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Homework4.Tests", "Homework4.Tests\Homework4.Tests.fsproj", "{4769ECCB-4BD5-4F3B-AFD2-011654638559}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,5 +46,13 @@ Global
 		{9DF30A10-6FF9-49E7-978B-BA66CBB65DC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9DF30A10-6FF9-49E7-978B-BA66CBB65DC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9DF30A10-6FF9-49E7-978B-BA66CBB65DC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5273FD41-E3F4-40E4-9723-9430BB6DDE2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5273FD41-E3F4-40E4-9723-9430BB6DDE2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5273FD41-E3F4-40E4-9723-9430BB6DDE2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5273FD41-E3F4-40E4-9723-9430BB6DDE2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4769ECCB-4BD5-4F3B-AFD2-011654638559}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4769ECCB-4BD5-4F3B-AFD2-011654638559}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4769ECCB-4BD5-4F3B-AFD2-011654638559}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4769ECCB-4BD5-4F3B-AFD2-011654638559}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -12,7 +12,6 @@ type point = {value: double; sort: pointSort}
 type interval = {points: point list}
 
 module Interval =
-    
     let private removeLast xs =
         let len = List.length xs
         List.removeAt (len-1) xs
