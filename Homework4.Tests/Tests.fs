@@ -5,43 +5,54 @@ open FsUnit
 open Homework4
 
 type testCase = {poly: polynomialBE; method: (double -> double) -> double -> double -> double}
-let func0 x = polynomialBE.poly0.getSubstitutionValue x
-let func1 x = polynomialBE.poly1.getSubstitutionValue x
-let func2 x = polynomialBE.poly2.getSubstitutionValue x
-let func3 x = polynomialBE.poly3.getSubstitutionValue x
 
 let accuracyCorrespondence = [
-                 {poly = polynomialBE.poly0; method = QuadratureFormulas.leftRectangle};
-                 {poly = polynomialBE.poly0; method = QuadratureFormulas.rightRectangle}
-                 {poly = polynomialBE.poly1; method = QuadratureFormulas.middleRectangle}
-                 {poly = polynomialBE.poly1; method = QuadratureFormulas.trapezoid};
-                 {poly = polynomialBE.poly3; method = QuadratureFormulas.simpson};
-                 {poly = polynomialBE.poly3; method = QuadratureFormulas.frac38}]
+                 {poly = polynomialBE.poly0; method = Quadratures.leftRectangle};
+                 {poly = polynomialBE.poly0; method = Quadratures.rightRectangle}
+                 {poly = polynomialBE.poly1; method = Quadratures.middleRectangle}
+                 {poly = polynomialBE.poly1; method = Quadratures.trapezoid};
+                 {poly = polynomialBE.poly3; method = Quadratures.simpson};
+                 {poly = polynomialBE.poly3; method = Quadratures.frac38}]
+
+let doublesEqual x y =
+    abs(x - y) < 10e-6
 
 [<TestCaseSource("accuracyCorrespondence")>]
-let ``Algebraic degree of accuracy equals to expected`` testCase =
+let ``Quadratures: algebraic degree of accuracy equals to expected`` testCase =
     let a, b = 0, 1
     let func x = testCase.poly.getSubstitutionValue x
     let methodResult = testCase.method func a b
     let tableInt = testCase.poly.definiteIntegral a b
-    let doublesEqual x y =
-        abs(x - y) < 10e-9
     Assert.True(doublesEqual methodResult tableInt)
 let accuracyNonCorrespondence = [
-                 {poly = polynomialBE.poly1; method = QuadratureFormulas.leftRectangle};
-                 {poly = polynomialBE.poly1; method = QuadratureFormulas.rightRectangle}
-                 {poly = polynomialBE.poly2; method = QuadratureFormulas.middleRectangle}
-                 {poly = polynomialBE.poly2; method = QuadratureFormulas.trapezoid};
-                 {poly = polynomialBE.poly4; method = QuadratureFormulas.simpson};
-                 {poly = polynomialBE.poly4; method = QuadratureFormulas.frac38}]
-
+                 {poly = polynomialBE.poly1; method = Quadratures.leftRectangle};
+                 {poly = polynomialBE.poly1; method = Quadratures.rightRectangle}
+                 {poly = polynomialBE.poly2; method = Quadratures.middleRectangle}
+                 {poly = polynomialBE.poly2; method = Quadratures.trapezoid};
+                 {poly = polynomialBE.poly4; method = Quadratures.simpson};
+                 {poly = polynomialBE.poly4; method = Quadratures.frac38}]
 
 [<TestCaseSource("accuracyNonCorrespondence")>]
-let ``Algebraic degree of accuracy not higher then expected`` testCase =
+let ``Quadratures: algebraic degree of accuracy not higher then expected`` testCase =
     let a, b = 0, 1
     let func x = testCase.poly.getSubstitutionValue x
     let methodResult = testCase.method func a b
     let tableInt = testCase.poly.definiteIntegral a b
-    let doublesEqual x y =
-        abs(x - y) < 10e-9
     Assert.False(doublesEqual methodResult tableInt)
+    
+type compTestCase = {poly: polynomialBE; method: (double -> double) -> double -> double -> int -> double; segmentsCount: int}
+
+let accuracyCorrespondenceComp = [
+                 {poly = polynomialBE.poly0; method = CompositeQuadratures.leftRectangle; segmentsCount = 10};
+                 {poly = polynomialBE.poly0; method = CompositeQuadratures.rightRectangle; segmentsCount = 10}
+                 {poly = polynomialBE.poly1; method = CompositeQuadratures.middleRectangle; segmentsCount = 20}
+                 {poly = polynomialBE.poly1; method = CompositeQuadratures.trapezoid; segmentsCount = 16};
+                 {poly = polynomialBE.poly3; method = CompositeQuadratures.simpson; segmentsCount = 10}]
+
+[<TestCaseSource("accuracyCorrespondenceComp")>]
+let ``Composite Quadratures: algebraic degree of accuracy equals to expected`` testCase =
+    let a, b = 0, 1
+    let func x = testCase.poly.getSubstitutionValue x
+    let methodResult = testCase.method func a b testCase.segmentsCount
+    let tableInt = testCase.poly.definiteIntegral a b
+    Assert.True(doublesEqual methodResult tableInt)

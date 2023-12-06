@@ -13,7 +13,7 @@ type polynomialBE = {coefficients: double list; degree: int}
     static member poly3 = {coefficients = [2; 3; -4; 2]; degree = 3}
     static member poly4 = {coefficients = [0; 3; 0; 0; 2]; degree = 4}
 
-module QuadratureFormulas =
+module Quadratures =
     let leftRectangle (func : double -> double) a b =
         (b - a) * func a
 
@@ -25,10 +25,10 @@ module QuadratureFormulas =
 
     let trapezoid (func : double -> double) a b =
         (b - a) / 2.0 * (func a + func b)
-    
+
     let simpson (func : double -> double) a b =
         (b - a) / 6.0 * (func a + 4.0 * func ((a + b) / 2.0) + func b)
-        
+
     let frac38 (func : double -> double) a b =
         let h = (b - a) / 3.0
         (b - a) * ((func a) / 8.0 + func (a + h) * 3.0 / 8.0 + func (a + 2.0 * h) * 3.0 / 8.0 + (func b) / 8.0)

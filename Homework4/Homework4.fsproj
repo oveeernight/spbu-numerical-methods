@@ -6,7 +6,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Include="QuadratureFormulas.fs" />
+        <Compile Include="Quadratures.fs" />
+        <Compile Include="CompositeQuadratures.fs" />
         <Compile Include="Program.fs"/>
     </ItemGroup>
 

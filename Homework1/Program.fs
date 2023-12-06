@@ -2,9 +2,9 @@ open System
 open Common.NonlinearEquations
 
 
-let func (x : double) : double = Math.Sin x + Math.Pow(x, 3) - 9.0 * x + 3.0
-let funcDer  (x : double) : double  = Math.Cos x + 3.0 * Math.Pow(x, 2.0) - 9.0
-let eps : double = Math.Pow(10, -8)
+let func (x : double) : double = sin x + Math.Pow(x, 3) - 9.0 * x + 3.0
+let funcDer  (x : double) : double  = cos x + 3.0 * Math.Pow(x, 2.0) - 9.0
+let eps : double =1e-8
 printfn "-------------Quantitative methods for solving nonlinear equations-------------"
 let a,b = (-5.0, 4.0)
 printfn "Function: sin x + x^3 - 9x + 3"
