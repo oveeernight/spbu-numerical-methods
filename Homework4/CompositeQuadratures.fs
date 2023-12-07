@@ -31,10 +31,13 @@ module CompositeQuadratures =
 
     let simpson (func : double -> double) a b m =
         let h = (b - a) / (double m)
-        let partition = [a..h..b]
+        let partition = List.init (m + 1) (fun i -> a + (double i * h))
         let doublePart = partition |> List.take m |> List.skip 1 |> List.fold (fun acc p -> acc + func p) 0.0
         let fourPart = partition |> List.take m |> List.fold (fun acc p -> acc + func (p + 0.5 * h)) 0.0
         (h / 6.0) * ((func (List.head partition)) + 2.0 * doublePart + 4.0 * fourPart + func (List.item m partition))
 
     let simpsonTheoryError (a : double) b (m : int) (fourthDerMax : double) : double =
         Math.Pow(b - a, 5.0) / (2880.0 * Math.Pow(m, 4.0)) * fourthDerMax
+        
+    let rungeRefinement jh jhl (l : int) (ast : int) =
+        (Math.Pow(l, double (ast +  1)) * jhl - jh) / (Math.Pow(l, double (ast + 1)) - double 1)
